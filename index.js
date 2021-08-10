@@ -131,11 +131,11 @@ function hungryDog(weight, age/*add your code here*/){
   }else{
     if (age <= 0.333){
       return weight * 10/100;
-    }else if (age <= 0.58333){
+    }else if (age < 0.583){
       return weight * 5/100;
-    }else if (age > 0.583){
+    } else if (age >= 0.583) { // you can also use (7/12).toFixed(3)) to get 7 months
       return weight * 4/100;
-    } else{
+    }else{
       return "Give milk!"
     }
   }
@@ -164,11 +164,20 @@ RULES OF THE GAME: Scissors beats Paper | Paper beats Rock | Rock beats Scissors
 
 HINT: Remember that the order in which we pass in our arguments matters when it comes to parameters
 */
-var computer = Math.random()
-function game(user, computer){
-  /*add your code here*/
+const rps = ["rock", "paper", "scissors"];
+const computer = rps[Math.floor(Math.random() * rps.length)];
 
+function game(user, computer){
+  if (user === computer){
+    return "it's a tie";
+  }else if(user === 'rock' && computer === 'paper' || user === 'paper' && computer === 'scissors' || user === 'scissors' && computer === 'rock' ){
+    return "you lose!"
+  }else{
+    return "you win!"
+  }
 }
+
+console.log(game('rock', computer))
 
 
 
@@ -271,10 +280,14 @@ HINT - try looking up the .includes() method
 */
 
 
-function vowelCounter(/*add your code here*/) {
+function vowelCounter(word/*add your code here*/) {
   /*add your code here*/
+  let arr = word.split('');
+	var vowels = ['a','e','i','o','u'];
+	var vowOnly = arr.filter(x => vowels.indexOf(x) !== -1);
+	return vowOnly.length;
 }
-
+vowelCounter("okay then")
 
 
 /*🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑*/
